@@ -1,0 +1,24 @@
+[Unit]
+Description=HGhub web (Rust core over HTTP, password gated)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=hghub
+Group=hghub
+EnvironmentFile=/etc/hghub-web/env
+ExecStart=/opt/hghub-web/hghub-web
+Restart=always
+RestartSec=3
+StateDirectory=hghub-web
+# 加固：只读系统、无家目录、只允许写数据目录
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ReadWritePaths=/var/lib/hghub-web
+MemoryMax=600M
+
+[Install]
+WantedBy=multi-user.target

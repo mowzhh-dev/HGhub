@@ -1,0 +1,9 @@
+[package]
+name = "tauri-shim"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+http = "1"
+tauri-shim-macros = { path = "../tauri-macros" }
